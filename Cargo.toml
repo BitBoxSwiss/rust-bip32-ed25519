@@ -9,8 +9,8 @@ categories = ["cryptography", "no-std"]
 description = "BIP32-Ed25519"
 
 [dependencies]
-sha2 = "0.9"
-hmac = "0.11"
+sha2 = { version = "0.9", default-features = false }
+hmac = { version = "0.11", default-features = false }
 curve25519-dalek = { version = "3", default-features = false, features = ["u32_backend"] }
 zeroize = { version = "1", features = ["zeroize_derive"] }
 
