@@ -134,10 +134,14 @@ impl Xprv {
     ///
     /// NOTE: the caller is responsible for ensuring the secret key is
     /// valid. See `normalize()` and `from_normalize()`.
+    ///
+    /// `expanded_secret_key_left` and `expanded_secret_key_right`
+    /// must be of size `ED25519_SECRET_KEY_SIZE`.
+    /// `chain_code` must be of size `CHAIN_CODE_SIZE`.
     fn from(
-        expanded_secret_key_left: &[u8; ED25519_SECRET_KEY_SIZE],
-        expanded_secret_key_right: &[u8; ED25519_SECRET_KEY_SIZE],
-        chain_code: &[u8; CHAIN_CODE_SIZE],
+        expanded_secret_key_left: &[u8],
+        expanded_secret_key_right: &[u8],
+        chain_code: &[u8],
     ) -> Self {
         let mut result = Xprv(Box::new(XprvData {
             expanded_secret_key_left: [0; ED25519_SECRET_KEY_SIZE],
@@ -160,13 +164,13 @@ impl Xprv {
 
     /// Creates an Xrpv from an expanded secret key and a chain code,
     /// normalizing see secret key. See `normalize()`.
-    pub fn from_normalize(
-        expanded_secret_key: &[u8; ED25519_EXPANDED_SECRET_KEY_SIZE],
-        chain_code: &[u8; CHAIN_CODE_SIZE],
-    ) -> Self {
+    ///
+    /// `expanded_secret_key` must be of size `ED25519_EXPANDED_SECRET_KEY_SIZE`.
+    /// `chain_code` mus be of size `CHAIN_CODE_SIZE`.
+    pub fn from_normalize(expanded_secret_key: &[u8], chain_code: &[u8]) -> Self {
         let mut result = Self::from(
-            &expanded_secret_key[..32].try_into().unwrap(),
-            &expanded_secret_key[32..].try_into().unwrap(),
+            &expanded_secret_key[..32],
+            &expanded_secret_key[32..],
             chain_code,
         );
         result.normalize();
