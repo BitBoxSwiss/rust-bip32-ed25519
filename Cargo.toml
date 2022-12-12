@@ -18,7 +18,7 @@ zeroize = { version = "1", features = ["zeroize_derive"] }
 quickcheck = "1"
 quickcheck_macros = "1"
 num-bigint = "0.4.0"
-# Used to test that the privae keys are valid and can be used to sign messages.
+# Used to test that the private keys are valid and can be used to sign messages.
 ed25519-dalek = { version = "1.0.1", default-features = false, features = ["u32_backend"] }
 # Used to compare our implementation in a table test:
 ed25519-bip32 = "0.4.0"
