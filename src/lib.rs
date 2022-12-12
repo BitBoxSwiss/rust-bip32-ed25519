@@ -15,7 +15,7 @@ use alloc::boxed::Box;
 use core::convert::TryInto;
 
 use core::ops::{Deref, DerefMut};
-use hmac::{Hmac, Mac, NewMac};
+use hmac::{Hmac, Mac};
 use sha2::Sha512;
 use zeroize::{Zeroize, Zeroizing};
 
