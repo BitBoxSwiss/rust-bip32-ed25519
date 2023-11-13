@@ -1,6 +1,6 @@
 [package]
 name = "bip32-ed25519"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Shift Crypto AG <support@shiftcrypto.ch>"]
 edition = "2021"
 license = "MIT OR Apache-2.0"
@@ -11,7 +11,7 @@ description = "BIP32-Ed25519"
 [dependencies]
 sha2 = { version = "0.10", default-features = false }
 hmac = { version = "0.12", default-features = false, features = ["reset"] }
-curve25519-dalek = { version = "3", default-features = false, features = ["u32_backend"] }
+curve25519-dalek = { version = "4", default-features = false }
 zeroize = { version = "1", features = ["zeroize_derive"] }
 
 [dev-dependencies]
@@ -19,7 +19,7 @@ quickcheck = "1"
 quickcheck_macros = "1"
 num-bigint = "0.4.0"
 # Used to test that the private keys are valid and can be used to sign messages.
-ed25519-dalek = { version = "1.0.1", default-features = false, features = ["u32_backend"] }
+ed25519-dalek = { version = "2.0.0", default-features = false, features = ["hazmat"] }
 # Used to compare our implementation in a table test:
 ed25519-bip32 = "0.4.0"
 serde = { version = "1.0.104", features = ["derive"] }
