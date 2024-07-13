@@ -1,6 +1,6 @@
 [package]
 name = "bip32-ed25519"
-version = "0.1.2"
+version = "0.2.0"
 authors = ["Shift Crypto AG <support@shiftcrypto.ch>"]
 edition = "2021"
 license = "MIT OR Apache-2.0"
@@ -9,12 +9,13 @@ categories = ["cryptography", "no-std"]
 description = "BIP32-Ed25519"
 
 [dependencies]
-sha2 = { version = "0.10", default-features = false }
+digest = { version = "0.10", default-features = false }
 hmac = { version = "0.12", default-features = false, features = ["reset"] }
 curve25519-dalek = { version = "4", default-features = false }
 zeroize = { version = "1", features = ["zeroize_derive"] }
 
 [dev-dependencies]
+sha2 = { version = "0.10", default-features = false }
 quickcheck = "1"
 quickcheck_macros = "1"
 num-bigint = "0.4.0"
