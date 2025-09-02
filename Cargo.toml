@@ -1,8 +1,8 @@
 [package]
 name = "bip32-ed25519"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["Shift Crypto AG <support@shiftcrypto.ch>"]
-edition = "2021"
+edition = "2024"
 license = "MIT OR Apache-2.0"
 keywords = ["no_std"]
 categories = ["cryptography", "no-std"]
