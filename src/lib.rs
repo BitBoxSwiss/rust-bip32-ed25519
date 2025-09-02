@@ -15,7 +15,7 @@ use alloc::boxed::Box;
 use core::convert::TryInto;
 
 use core::ops::{Deref, DerefMut};
-use digest::{core_api::BlockSizeUser, typenum::U64, Digest};
+use digest::{Digest, core_api::BlockSizeUser, typenum::U64};
 use hmac::{Mac, SimpleHmac};
 use zeroize::{Zeroize, ZeroizeOnDrop, Zeroizing};
 
@@ -370,18 +370,24 @@ mod tests {
 
     #[test]
     fn xpub_hard_derivation_fails() {
-        assert!(Xprv::<Sha512>::from_normalize(KEY, CHAIN_CODE)
-            .public()
-            .derive(HARDENED_OFFSET - 1)
-            .is_ok());
-        assert!(Xprv::<Sha512>::from_normalize(KEY, CHAIN_CODE)
-            .public()
-            .derive(HARDENED_OFFSET)
-            .is_err());
-        assert!(Xprv::<Sha512>::from_normalize(KEY, CHAIN_CODE)
-            .public()
-            .derive(u32::MAX)
-            .is_err());
+        assert!(
+            Xprv::<Sha512>::from_normalize(KEY, CHAIN_CODE)
+                .public()
+                .derive(HARDENED_OFFSET - 1)
+                .is_ok()
+        );
+        assert!(
+            Xprv::<Sha512>::from_normalize(KEY, CHAIN_CODE)
+                .public()
+                .derive(HARDENED_OFFSET)
+                .is_err()
+        );
+        assert!(
+            Xprv::<Sha512>::from_normalize(KEY, CHAIN_CODE)
+                .public()
+                .derive(u32::MAX)
+                .is_err()
+        );
     }
 
     #[test]
